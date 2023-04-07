@@ -1,4 +1,6 @@
 const express = require('express');
+
+
 const cors = require('cors');
 const mongoose = require("mongoose");
 const User = require('./models/User');
@@ -19,7 +21,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-mongoose.connect("mongodb+srv://admin:WkeZI2b8y2JGGCoq@cluster0.v8jangm.mongodb.net/Blog?retryWrites=true&w=majority")
+// mongoose.connect("mongodb+srv://admin:WkeZI2b8y2JGGCoq@cluster0.v8jangm.mongodb.net/Blog?retryWrites=true&w=majority")
+
+
+mongoose.connect("mongodb://localhost:27017")
 
 app.post('/register', async (req,res) => {
   const {username,password} = req.body;
@@ -107,7 +112,7 @@ app.put('/post',uploadMiddleware.single('file'), async (req,res) => {
     if (!isAuthor) {
       return res.status(400).json('you are not the author');
     }
-    await postDoc.update({
+    await postDoc.updateOne({
       title,
       summary,
       content,

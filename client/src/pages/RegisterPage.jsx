@@ -23,6 +23,9 @@ function RegisterPage() {
   return (
     <form className="register" onSubmit={register}>
       <h1>Register</h1>
+      <input type="email"
+             placeholder="email"
+            />
       <input type="text"
              placeholder="username"
              value={username}
