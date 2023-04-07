@@ -21,10 +21,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-// mongoose.connect("mongodb+srv://admin:WkeZI2b8y2JGGCoq@cluster0.v8jangm.mongodb.net/Blog?retryWrites=true&w=majority")
+mongoose.connect('mongodb+srv://blog:RD8paskYC8Ayj09u@cluster0.pflplid.mongodb.net/?retryWrites=true&w=majority');
 
 
-mongoose.connect("mongodb://localhost:27017")
+// mongoose.connect("mongodb://localhost:27017")
 
 app.post('/register', async (req,res) => {
   const {username,password} = req.body;
